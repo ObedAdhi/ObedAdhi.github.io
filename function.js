@@ -6,18 +6,16 @@ var right = './arrow/arrow-right.png'
 var left = './arrow/arrow-left.png'
 let question = ""
 let keyPressed = 0
-let limitNum = 1             //set required button press here
+let limitNum = 1                //set required button press here
 let codeLeft = limitNum         
-let timer = 2                  //set timer here
+let timer = 2                   //set timer here
 var countTimer
 let gameStart = false
 let miss = 0
 let difficultylvl = document.getElementById("difficulty").innerHTML;
 let hardmode = false
 let hellmode = false
-
-
-//audio var
+//audio var===================================================================================
 let sound = new Audio("./sound/button.wav")
 let bgm = new Audio("./sound/shepard-tone.mp3")
 let fiuw = new Audio("./sound/phiuw.wav")
@@ -25,7 +23,6 @@ let boom = new Audio("./sound/jeger.wav")
 let victory = new Audio("./sound/dissidia.mp3")
 
 //bottom of variable area=====================================================================
-
 
 
 //Next level button
@@ -39,30 +36,29 @@ document.getElementById("lastgo").onclick = function() {
     location.href ="page4.html"
 }
 document.getElementById("hardlvl100").onclick = function() {
-    location.href ="page2.html"
+    location.href ="page2a.html"
 }
 document.getElementById("helllvl100").onclick = function() {
     location.href ="page3.html"
 }
-// document.getElementById("lastgo100").onclick = function() {
-//     location.href ="page4.html"
-// }
-
+document.getElementById("lastgo100").onclick = function() {
+    location.href ="page4.html"
+}
 
 
 //Level checker
 if (difficultylvl == "hard") {
     hardmode = true
-    limitNum = 5              //set required button press here
+    limitNum = 5                //set required button press here
     codeLeft = limitNum         
     timer = 30                  //set timer here
     keyPressed = 0
     miss = 0
 } else if (difficultylvl == "hell") {
     hellmode = true
-    limitNum = 3              //set required button press here
+    limitNum = 3                //set required button press here
     codeLeft = limitNum         
-    timer = 100                  //set timer here
+    timer = 100                 //set timer here
     keyPressed = 0
     miss = 0    
 }
@@ -104,7 +100,7 @@ function startIt() {
     console.log(difficultylvl);
 }
 
-//timer handler
+//Timer handler
 function countdown() {
     countTimer = setInterval(function(){
     if(timer <= 0){
@@ -120,14 +116,15 @@ function countdown() {
         };
         if (keyPressed == 0) {
             document.getElementById("popup").innerHTML = "how dare you! i guess some people just want to watch the world burn..."
-
         }
+
     } else {
         document.getElementById("timeleft").innerHTML = timer + " seconds";
     }
     timer -= 1;
     }, 1000);
 }
+
 function stopCount() {
     clearInterval(countTimer);
 }
@@ -138,10 +135,10 @@ startButton.onclick = function() {
     arrowCreator(),startIt(),countdown()
 };
 
-//key input handler
+//key input handler, lock key if start button not pressed
 document.addEventListener('keydown', function(event) {
     console.log(event.code);
-    if (gameStart == true) {
+    if (gameStart == true) { //unlock key
         if (miss == 0) {
             document.getElementById("statuscombo").innerHTML = "perfect"
         } else if (miss < 5 && miss > 0) {
@@ -149,7 +146,6 @@ document.addEventListener('keydown', function(event) {
         } else if (miss > 10) {
             document.getElementById("statuscombo").innerHTML = "oh my god! the world's gonna end"
         }
-
 
         if (event.code != "ArrowLeft" && event.code != "ArrowRight" && event.code != "ArrowDown" && event.code != "ArrowUp") {
             document.getElementById("popup").innerHTML = "press the arrow key !!!"
@@ -162,9 +158,7 @@ document.addEventListener('keydown', function(event) {
             document.getElementById("popup").innerHTML = "don't panic! concentrate!!!"
             miss ++
             document.getElementById("missed").innerHTML = miss
-
             arrowCreator()
-
         } else if (event.code === question) {
             arrowCreator()
             sound.play()
@@ -173,7 +167,6 @@ document.addEventListener('keydown', function(event) {
             keyPressed ++
             document.getElementById("keypressed").innerHTML = keyPressed
             document.getElementById("popup").innerHTML = "Good! keep it up!!"
-
 
             if (codeLeft == 0 && timer != 0) {
                 document.getElementById("keypressed").innerHTML = keyPressed
@@ -185,23 +178,19 @@ document.addEventListener('keydown', function(event) {
                 bgm.pause();
                 victory.play()
                 document.getElementById("fireworks").style="visibility: visible;"
-
                 
                 if (miss == 0 && hardmode == false && hellmode == false) {
                     document.getElementById("hardmode100").style="visibility: visible; width: 200px;"   
                 } else if (miss != 0 && hardmode == false && hellmode == false){
                     document.getElementById("hardmode").style="visibility: visible; width: 200px;"
                 }
-                
                 if (hardmode == true && miss == 0) {
                     document.getElementById("hellmode100").style="visibility: visible; width: 200px;"  
                 } else if (hardmode == true && miss != 0 ) {
                     document.getElementById("hellmode").style="visibility: visible; width: 200px;"
                 }
-
                 if (hellmode == true && miss == 0) {
-                    document.getElementById("finish100").style="visibility: visible; width: 200px;"
-                    
+                    document.getElementById("finish100").style="visibility: visible; width: 200px;" 
                 } else if (hellmode == true && miss != 0) {
                     document.getElementById("finish").style="visibility: visible; width: 200px;"
                 }
