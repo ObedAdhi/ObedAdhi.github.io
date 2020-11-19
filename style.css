@@ -1,0 +1,97 @@
+.font2P {
+    font-family: 'Press Start 2P', Times, cursive;
+    font-size: smaller;
+    line-height: 15pt;
+    text-transform: uppercase;
+}
+
+#title {
+    line-height: 28pt;
+}
+
+body{
+    margin: 0;
+}
+
+.foot {
+    font-size: x-small;
+    color: antiquewhite;
+    line-height: 12pt;
+    position: fixed; 
+    padding: 10px 10px 0px 10px; 
+    bottom: 0; 
+    width: 100%;   
+    height: 40px; 
+    background: black; 
+}
+
+#normaltext{
+    text-transform: none;
+}
+
+.inside-size {
+    min-width: 600px;
+    max-width: 800px;
+}
+
+.margin-all{
+    margin-left: 5%;
+    margin-top: 3%;
+    margin-right: 7%;
+    margin-bottom: 7%;
+}
+
+/*Area untuk gamepage*/
+.center {
+    position: relative;
+    background-color: black;
+    width: 800px;
+    height: 500px;
+    border: 1px solid red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+.button-area {
+    position: relative;
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+#game-area {
+    position: relative;
+    background-color: black;
+    width: 800px;
+    height: 500px;
+    border: 1px solid red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+.game-status {
+    position: relative;
+    width: 800px;
+    height: 100px;
+    display: flex;
+    margin: auto;
+}
+
+.left {
+    float: left;
+}
+
+#arrow{
+    position: relative;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    margin: auto;
+}
