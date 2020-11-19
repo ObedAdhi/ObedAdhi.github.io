@@ -6,12 +6,16 @@ var right = './arrow/arrow-right.png'
 var left = './arrow/arrow-left.png'
 let question = ""
 let keyPressed = 0
-const limitNum = 1             //set required button press here
+let limitNum = 1             //set required button press here
 let codeLeft = limitNum         
 let timer = 2                  //set timer here
 var countTimer
 let gameStart = false
 let miss = 0
+let difficultylvl = document.getElementById("difficulty").innerHTML;
+let hardmode = false
+let hellmode = false
+
 
 //audio var
 let sound = new Audio("./sound/button.wav")
@@ -20,8 +24,48 @@ let fiuw = new Audio("./sound/phiuw.wav")
 let boom = new Audio("./sound/jeger.wav")
 let victory = new Audio("./sound/dissidia.mp3")
 
-//bottom of variable area
+//bottom of variable area=====================================================================
 
+
+
+//Next level button
+document.getElementById("hardlvl").onclick = function() {
+    location.href ="page2.html"
+}
+document.getElementById("helllvl").onclick = function() {
+    location.href ="page3.html"
+}
+document.getElementById("lastgo").onclick = function() {
+    location.href ="page4.html"
+}
+document.getElementById("hardlvl100").onclick = function() {
+    location.href ="page2.html"
+}
+document.getElementById("helllvl100").onclick = function() {
+    location.href ="page3.html"
+}
+// document.getElementById("lastgo100").onclick = function() {
+//     location.href ="page4.html"
+// }
+
+
+
+//Level checker
+if (difficultylvl == "hard") {
+    hardmode = true
+    limitNum = 5              //set required button press here
+    codeLeft = limitNum         
+    timer = 30                  //set timer here
+    keyPressed = 0
+    miss = 0
+} else if (difficultylvl == "hell") {
+    hellmode = true
+    limitNum = 3              //set required button press here
+    codeLeft = limitNum         
+    timer = 100                  //set timer here
+    keyPressed = 0
+    miss = 0    
+}
 
 
 //function to make random arrow
@@ -57,6 +101,7 @@ function startIt() {
     document.getElementById("keypressed").innerHTML = "0"
     document.getElementById("popup").innerHTML = "good luck!!!"
     bgm.play()
+    console.log(difficultylvl);
 }
 
 //timer handler
@@ -119,14 +164,7 @@ document.addEventListener('keydown', function(event) {
             document.getElementById("missed").innerHTML = miss
 
             arrowCreator()
-            // music.pause();
-            // music.currentTime = 0
-            // i=0
-            // j=0
-            // score=0 
-            // timeleft=0
-            // command.pause();
-            // command.currentTime = 0
+
         } else if (event.code === question) {
             arrowCreator()
             sound.play()
@@ -135,6 +173,8 @@ document.addEventListener('keydown', function(event) {
             keyPressed ++
             document.getElementById("keypressed").innerHTML = keyPressed
             document.getElementById("popup").innerHTML = "Good! keep it up!!"
+
+
             if (codeLeft == 0 && timer != 0) {
                 document.getElementById("keypressed").innerHTML = keyPressed
                 gameStart = false
@@ -145,9 +185,27 @@ document.addEventListener('keydown', function(event) {
                 bgm.pause();
                 victory.play()
                 document.getElementById("fireworks").style="visibility: visible;"
-                document.getElementById("hardmode").style="visibility: visible; width: 200px;"
+
+                
+                if (miss == 0 && hardmode == false && hellmode == false) {
+                    document.getElementById("hardmode100").style="visibility: visible; width: 200px;"   
+                } else if (miss != 0 && hardmode == false && hellmode == false){
+                    document.getElementById("hardmode").style="visibility: visible; width: 200px;"
+                }
+                
+                if (hardmode == true && miss == 0) {
+                    document.getElementById("hellmode100").style="visibility: visible; width: 200px;"  
+                } else if (hardmode == true && miss != 0 ) {
+                    document.getElementById("hellmode").style="visibility: visible; width: 200px;"
+                }
+
+                if (hellmode == true && miss == 0) {
+                    document.getElementById("finish100").style="visibility: visible; width: 200px;"
+                    
+                } else if (hellmode == true && miss != 0) {
+                    document.getElementById("finish").style="visibility: visible; width: 200px;"
+                }
             }
         }
-
     }
 })

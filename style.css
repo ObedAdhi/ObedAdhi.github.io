@@ -11,6 +11,8 @@
 
 body{
     margin: 0;
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 .foot {
@@ -106,9 +108,9 @@ body{
 }
 
 #fireworks{
-  
-
     position: fixed; 
     width: 800px;
+    max-width: 800px;
     top: 25%;
+    overflow-x: hidden;
 }
