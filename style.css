@@ -69,7 +69,6 @@ body{
     background-color: black;
     width: 800px;
     height: 500px;
-    border: 1px solid red;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -86,6 +85,16 @@ body{
 
 .left {
     float: left;
+    width: 100px;
+    height: 100px;
+    text-align: center;
+}
+
+.right {
+    float: inline-end;
+    width: 300px;
+    height: 100px;
+    text-align: right;
 }
 
 #arrow{
@@ -94,4 +103,12 @@ body{
     height: 100px;
     display: flex;
     margin: auto;
+}
+
+#fireworks{
+  
+
+    position: fixed; 
+    width: 800px;
+    top: 25%;
 }

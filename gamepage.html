@@ -11,38 +11,45 @@
 </head>
 <body>
     <div class="button-area">
-        <button class="font2P" type="submit" onclick="alert('You pressed the button!')">start</button>
+        <p id="popup" class="font2P" >you have 30 seconds to input the code!</p> <br>
+        <button class="font2P" id="startbutton">start</button>
+        
+        
     </div>
     
     <div id="game-area">
-        <img id="arrow" src="arrow/arrow-down.png" alt="">
-        <img id="down-arr" src="arrow/arrow-down.png" width="0" height="0">
-        <img id="up-arr" src="arrow/arrow-up.png" width="0" height="0">
-        <img id="right-arr" src="arrow/arrow-right.png" width="0" height="0">
-        <img id="left-arr" src="arrow/arrow-left.png" width="0" height="0">
-        
+        <img id="fireworks" src="other-image/fireworks.gif" style="visibility: hidden;">
+        <img id="arrow" src="arrow/arrow-down.png" style="visibility: hidden;">  
     </div>
     <div class="game-status font2P">
         <div class="left">
+            <p>Time left</p>
+            <p id="timeleft"></p>
+        </div>
+        <div class="left">
+            <p>Key left</p>
+            <p id="keyleft"></p>
+        </div>
+        <div class="left">
             <p>Key Pressed</p>
-
+            <p id="keypressed"></p>
+        </div>
+        <div class="left">
+            <p>miss click</p>
+            <p id="missed"></p>
+        </div>
+        <div class="left" style="width: 200px;">
+            <p>status</p>
+            <p id="statuscombo">not started</p>
+        </div>
+        <div id="hardmode" class="left" style="width: 200px; visibility: hidden;" >
+            <p>hard mode</p>
+            <button class="font2P" id="startbutton">Let's go!</button>
         </div>
 
-        <div id="timer"></div>
-        
+
 
     </div>
-
-    <section class="inside-size font2P margin-all">
-        <p class="font2P">
-
-        </p>
-
-        
-    </section>
-
-
-    
 
 
 
