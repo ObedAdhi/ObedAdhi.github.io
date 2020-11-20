@@ -6,9 +6,9 @@ var right = './arrow/arrow-right.png'
 var left = './arrow/arrow-left.png'
 let question = ""
 let keyPressed = 0
-let limitNum = 1                //set required button press here
+let limitNum = 2                //set required button press here 20
 let codeLeft = limitNum         
-let timer = 2                   //set timer here
+let timer = 3                   //set timer here 20
 var countTimer
 let gameStart = false
 let miss = 0
@@ -21,7 +21,6 @@ let bgm = new Audio("./sound/shepard-tone.mp3")
 let fiuw = new Audio("./sound/phiuw.wav")
 let boom = new Audio("./sound/jeger.wav")
 let victory = new Audio("./sound/dissidia.mp3")
-
 //bottom of variable area=====================================================================
 
 
@@ -39,26 +38,26 @@ document.getElementById("hardlvl100").onclick = function() {
     location.href ="page2a.html"
 }
 document.getElementById("helllvl100").onclick = function() {
-    location.href ="page3.html"
+    location.href ="page3a.html"
 }
 document.getElementById("lastgo100").onclick = function() {
-    location.href ="page4.html"
+    location.href ="page4a.html"
 }
 
 
 //Level checker
 if (difficultylvl == "hard") {
     hardmode = true
-    limitNum = 5                //set required button press here
+    limitNum = 2               //set required button press here 50
     codeLeft = limitNum         
-    timer = 30                  //set timer here
+    timer = 3                  //set timer here 30
     keyPressed = 0
     miss = 0
 } else if (difficultylvl == "hell") {
     hellmode = true
-    limitNum = 3                //set required button press here
+    limitNum = 2             //set required button press here 85
     codeLeft = limitNum         
-    timer = 100                 //set timer here
+    timer = 3                 //set timer here 45
     keyPressed = 0
     miss = 0    
 }
@@ -95,6 +94,7 @@ function startIt() {
     document.getElementById("missed").innerHTML = "0"
     document.getElementById("keyleft").innerHTML = "0"
     document.getElementById("keypressed").innerHTML = "0"
+    document.getElementById("statuscombo").innerHTML = "started"
     document.getElementById("popup").innerHTML = "good luck!!!"
     bgm.play()
     console.log(difficultylvl);
@@ -104,9 +104,9 @@ function startIt() {
 function countdown() {
     countTimer = setInterval(function(){
     if(timer <= 0){
+        gameStart = false
         clearInterval(countTimer);
         document.getElementById("timeleft").innerHTML = "time's up";
-        gameStart = false
         document.getElementById("popup").innerHTML = "the world is gonna end. at least you tried..."
         main.style="visibility: hidden;"
         bgm.pause();
@@ -134,6 +134,7 @@ function stopCount() {
 startButton.onclick = function() {
     arrowCreator(),startIt(),countdown()
 };
+
 
 //key input handler, lock key if start button not pressed
 document.addEventListener('keydown', function(event) {
@@ -167,6 +168,7 @@ document.addEventListener('keydown', function(event) {
             keyPressed ++
             document.getElementById("keypressed").innerHTML = keyPressed
             document.getElementById("popup").innerHTML = "Good! keep it up!!"
+
 
             if (codeLeft == 0 && timer != 0) {
                 document.getElementById("keypressed").innerHTML = keyPressed

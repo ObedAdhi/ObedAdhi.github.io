@@ -105,6 +105,13 @@ body{
     height: 100px;
     display: flex;
     margin: auto;
+
+    animation: mymove 400ms infinite;
+}
+  
+@keyframes mymove {
+0%   {opacity: 0;}
+100% {opacity: 1;;}
 }
 
 #fireworks{
