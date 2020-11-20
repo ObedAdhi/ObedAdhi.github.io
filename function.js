@@ -6,9 +6,9 @@ var right = './arrow/arrow-right.png'
 var left = './arrow/arrow-left.png'
 let question = ""
 let keyPressed = 0
-let limitNum = 2                //set required button press here 20
+let limitNum = 20                //set required button press here 20
 let codeLeft = limitNum         
-let timer = 3                   //set timer here 20
+let timer = 20                   //set timer here 20
 var countTimer
 let gameStart = false
 let miss = 0
@@ -48,16 +48,16 @@ document.getElementById("lastgo100").onclick = function() {
 //Level checker
 if (difficultylvl == "hard") {
     hardmode = true
-    limitNum = 2               //set required button press here 50
+    limitNum = 50               //set required button press here 50
     codeLeft = limitNum         
-    timer = 3                  //set timer here 30
+    timer = 30                  //set timer here 30
     keyPressed = 0
     miss = 0
 } else if (difficultylvl == "hell") {
     hellmode = true
-    limitNum = 2             //set required button press here 85
+    limitNum = 85             //set required button press here 85
     codeLeft = limitNum         
-    timer = 3                 //set timer here 45
+    timer = 45                 //set timer here 45
     keyPressed = 0
     miss = 0    
 }
